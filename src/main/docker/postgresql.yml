@@ -1,0 +1,11 @@
+version: '2'
+services:
+    partysleeperplanner-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/partySleeperPlanner/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=partySleeperPlanner
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
