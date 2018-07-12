@@ -40,6 +40,8 @@ public class CacheConfiguration {
             cm.createCache(fr.efaya.sleepers.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(fr.efaya.sleepers.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(fr.efaya.sleepers.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(fr.efaya.sleepers.domain.Sleeper.class.getName(), jcacheConfiguration);
+            cm.createCache(fr.efaya.sleepers.domain.Location.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

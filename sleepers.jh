@@ -1,0 +1,17 @@
+entity Sleeper {
+	name String required
+}
+
+entity Location {
+	name String required,
+    max Integer required
+}
+
+relationship ManyToOne {
+	Sleeper{site(name)} to Location
+}
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl

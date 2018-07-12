@@ -1,0 +1,29 @@
+{
+    "name": "Sleeper",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "site",
+            "otherEntityName": "location",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180711151501",
+    "entityTableName": "sleeper",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

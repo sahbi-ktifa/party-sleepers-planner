@@ -1,0 +1,23 @@
+
+{
+    "partySleeperPlannerApp": {
+        "sleeper" : {
+            "home": {
+                "title": "Sleepers",
+                "createLabel": "Create a new Sleeper",
+                "createOrEditLabel": "Create or edit a Sleeper"
+            },
+            "created": "A new Sleeper is created with identifier {{ param }}",
+            "updated": "A Sleeper is updated with identifier {{ param }}",
+            "deleted": "A Sleeper is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sleeper {{ id }}?"
+            },
+            "detail": {
+                "title": "Sleeper"
+            },
+            "name": "Name",
+            "site": "Site"
+        }
+    }
+}
