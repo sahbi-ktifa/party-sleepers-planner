@@ -21,7 +21,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let sleeper of sleepers ;trackBy: trackId">
+            <tr *ngFor="let sleeper of sleepers ;trackBy: trackId"  [ngClass]="{'not-assigned': !sleeper.siteId}">
                 <td><a [routerLink]="['/sleeper', sleeper.id, 'view' ]">{{sleeper.id}}</a></td>
                 <td>{{sleeper.name}}</td>
                 <td>
