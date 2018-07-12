@@ -9,9 +9,9 @@
                 <dd>
                     <span>{{location.name}}</span>
                 </dd>
-                <dt><span jhiTranslate="partySleeperPlannerApp.location.max">Max</span></dt>
+                <dt><span jhiTranslate="partySleeperPlannerApp.location.occupant">Occupant(s)</span></dt>
                 <dd>
-                    <span>{{location.max}}</span>
+                    <span>{{location.occupants ? location.occupants : 0}} / {{location.max}}</span>
                 </dd>
             </dl>
 

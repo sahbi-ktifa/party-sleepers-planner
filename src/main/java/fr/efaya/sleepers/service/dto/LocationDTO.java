@@ -17,6 +17,8 @@ public class LocationDTO implements Serializable {
     @NotNull
     private Integer max;
 
+    private Integer occupants;
+
     public Long getId() {
         return id;
     }
@@ -39,6 +41,14 @@ public class LocationDTO implements Serializable {
 
     public void setMax(Integer max) {
         this.max = max;
+    }
+
+    public Integer getOccupants() {
+        return occupants;
+    }
+
+    public void setOccupants(Integer occupants) {
+        this.occupants = occupants;
     }
 
     @Override

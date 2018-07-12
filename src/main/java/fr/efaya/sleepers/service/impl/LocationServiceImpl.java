@@ -1,13 +1,12 @@
 package fr.efaya.sleepers.service.impl;
 
-import fr.efaya.sleepers.service.LocationService;
 import fr.efaya.sleepers.domain.Location;
 import fr.efaya.sleepers.repository.LocationRepository;
+import fr.efaya.sleepers.service.LocationService;
 import fr.efaya.sleepers.service.dto.LocationDTO;
 import fr.efaya.sleepers.service.mapper.LocationMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

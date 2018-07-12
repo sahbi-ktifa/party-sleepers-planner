@@ -17,7 +17,8 @@
                 "title": "Location"
             },
             "name": "Name",
-            "max": "Max"
+            "max": "Max",
+            "occupant": "Occupant(s)"
         }
     }
 }
