@@ -10,7 +10,7 @@ import { SleeperService } from './sleeper.service';
 @Component({
     selector: 'jhi-sleeper',
     templateUrl: './sleeper.component.html',
-    styles: ['.not-assigned { background-color: #e06e79; }']
+    styles: ['.not-assigned { background-color: #e06e79 !important; }']
 })
 export class SleeperComponent implements OnInit, OnDestroy {
     sleepers: ISleeper[];
