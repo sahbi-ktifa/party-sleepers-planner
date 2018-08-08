@@ -1,5 +1,5 @@
 <template>
-    <div class="ribbon" v-if="ribbonEnv"><a href="">{{ribbonEnv}}</a></div>
+    <div class="ribbon" v-if="ribbonEnv"><a href="" v-text="$t('global.ribbon.' + ribbonEnv)">{{ribbonEnv}}</a></div>
 </template>
 <script>
     import ProfileService from '../mixins/ProfileService'

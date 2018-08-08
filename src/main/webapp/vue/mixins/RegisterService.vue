@@ -6,7 +6,6 @@
         name: 'RegisterService',
         methods: {
             processRegistration: function(account) {
-                console.log(account);
                 return axios.post(SERVER_API_URL + 'api/register', account);
             }
         }

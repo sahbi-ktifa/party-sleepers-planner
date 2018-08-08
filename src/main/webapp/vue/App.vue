@@ -8,7 +8,9 @@
             <div class="card jh-card">
                 <!--<router-outlet></router-outlet>
                 <router-outlet name="popup"></router-outlet>-->
-                <router-view/>
+                <keep-alive>
+                    <router-view></router-view>
+                </keep-alive>
             </div>
             <jhi-footer></jhi-footer>
         </div>
@@ -16,9 +18,9 @@
 </template>
 
 <script>
-    import Ribbon from '@/components/Ribbon'
-    import JhiFooter from '@/components/JhiFooter'
-    import JhiNavBar from '@/components/JhipNavBar'
+    import Ribbon from './components/Ribbon'
+    import JhiFooter from './components/JhiFooter'
+    import JhiNavBar from './components/JhipNavBar'
 
     export default {
         name: 'App',
@@ -26,7 +28,7 @@
             'ribbon': Ribbon,
             'jhi-nav-bar': JhiNavBar,
             'jhi-footer': JhiFooter
-        },
+        }
     }
 </script>
 

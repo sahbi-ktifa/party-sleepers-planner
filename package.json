@@ -16,6 +16,7 @@
     "i": "^0.3.6",
     "npm": "^6.3.0",
     "vue": "^2.5.2",
+    "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4"
   },
@@ -36,6 +37,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "merge-jsons-webpack-plugin": "^1.0.17",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
@@ -78,6 +80,7 @@
     "postinstall": "webdriver-manager update --gecko false",
     "start": "npm run webpack:dev",
     "start-vue": "npm run vue:webpack:dev",
+    "build-vue": "npm run vue:webpack:dev-build",
     "serve": "npm run start",
     "build": "npm run webpack:prod",
     "test": "npm run lint && jest --coverage --logHeapUsage -w=2 --config src/test/javascript/jest.conf.js",
@@ -90,7 +93,8 @@
     "webpack:test": "npm run test",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
-    "vue:webpack:dev": "webpack-dev-server --config webpack/vue.webpack.dev.conf.js --progress --inline"
+    "vue:webpack:dev": "webpack-dev-server --config webpack/vue.webpack.dev.conf.js --progress --inline",
+    "vue:webpack:dev-build": "webpack --config webpack/vue.webpack.dev.conf.js"
   },
   "jestSonar": {
     "reportPath": "build/test-results/jest",
