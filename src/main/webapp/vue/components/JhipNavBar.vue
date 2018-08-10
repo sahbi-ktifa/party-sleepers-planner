@@ -28,14 +28,14 @@
                             <font-awesome-icon icon="th-list" />
                             <span v-text="$t('global.menu.entities.main')">Entities</span>
                         </template>
-                        <b-dropdown-item class="dropdown-item" routerLink="sleeper" v-on:click="collapseNavbar()">
+                        <router-link to="/sleeper" tag="b-dropdown-item" class="dropdown-item" v-on:click="collapseNavbar()">
                             <font-awesome-icon icon="asterisk" />
                             <span v-text="$t('global.menu.entities.sleeper')">Sleeper</span>
-                        </b-dropdown-item>
-                        <b-dropdown-item class="dropdown-item" routerLink="location" v-on:click="collapseNavbar()">
+                        </router-link>
+                        <router-link to="/location" tag="b-dropdown-item" class="dropdown-item" v-on:click="collapseNavbar()">
                             <font-awesome-icon icon="asterisk" />
                             <span v-text="$t('global.menu.entities.location')">Location</span>
-                        </b-dropdown-item>
+                        </router-link>
                     </b-dropdown>
                 </li>
                 <li class="nav-item dropdown pointer" v-if="hasAnyAuthority('ROLE_ADMIN')">
@@ -101,24 +101,18 @@
                         <template slot="button-content" v-if="getImageUrl()">
                             <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
                         </template>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
-                            <router-link to="settings">
-                                <font-awesome-icon icon="wrench" />
-                                <span v-text="$t('global.menu.account.settings')">Settings</span>
-                            </router-link>
-                        </b-dropdown-item>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
-                            <router-link to="changePassword">
-                                <font-awesome-icon icon="clock" />
-                                <span v-text="$t('global.menu.account.password')">Password</span>
-                            </router-link>
-                        </b-dropdown-item>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
-                            <router-link to="sessions">
-                                <font-awesome-icon icon="cloud" />
-                                <span v-text="$t('global.menu.account.sessions')">Sessions</span>
-                            </router-link>
-                        </b-dropdown-item>
+                        <router-link to="/settings" tag="b-dropdown-item" v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="wrench" />
+                            <span v-text="$t('global.menu.account.settings')">Settings</span>
+                        </router-link>
+                        <router-link to="/changePassword" tag="b-dropdown-item" v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="clock" />
+                            <span v-text="$t('global.menu.account.password')">Password</span>
+                        </router-link>
+                        <router-link to="/sessions" tag="b-dropdown-item" v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="cloud" />
+                            <span v-text="$t('global.menu.account.sessions')">Sessions</span>
+                        </router-link>
                         <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="logout()" id="logout">
                             <font-awesome-icon icon="sign-out-alt" />
                             <span v-text="$t('global.menu.account.logout')">Sign out</span>
@@ -127,12 +121,10 @@
                             <font-awesome-icon icon="sign-in-alt" />
                             <span v-text="$t('global.menu.account.login')">Sign in</span>
                         </b-dropdown-item>
-                        <b-dropdown-item v-if="!authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
-                            <router-link to="register">
-                                <font-awesome-icon icon="user-plus" />
-                                <span v-text="$t('global.menu.account.register')">Register</span>
-                            </router-link>
-                        </b-dropdown-item>
+                        <router-link to="/register" tag="b-dropdown-item" v-if="!authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="user-plus" />
+                            <span v-text="$t('global.menu.account.register')">Register</span>
+                        </router-link>
                     </b-dropdown>
                 </li>
             </ul>

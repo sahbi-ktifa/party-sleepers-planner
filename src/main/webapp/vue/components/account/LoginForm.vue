@@ -68,12 +68,11 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                }).then(function (res) {
+                }).then(function () {
                     vm.authenticationError = false;
                     vm.$root.$emit('bv::hide::modal','loginModal');
                     vm.retrieveAccount();
-                }).catch(error  => {
-                    console.log(error);
+                }).catch(()=> {
                     this.authenticationError = true;
                 });
             }
