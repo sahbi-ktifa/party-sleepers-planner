@@ -37,15 +37,15 @@
         },
         "form": {
             "username": "Username",
-            "username.placeholder": "Your username",
+            "username-placeholder": "Your username",
             "currentpassword": "Current password",
-            "currentpassword.placeholder": "Current password",
+            "currentpassword-placeholder": "Current password",
             "newpassword": "New password",
-            "newpassword.placeholder": "New password",
+            "newpassword-placeholder": "New password",
             "confirmpassword": "New password confirmation",
-            "confirmpassword.placeholder": "Confirm the new password",
+            "confirmpassword-placeholder": "Confirm the new password",
             "email": "Email",
-            "email.placeholder": "Your email"
+            "email-placeholder": "Your email"
         },
         "messages": {
             "info": {
@@ -125,7 +125,7 @@
     },
     "error": {
         "internalServerError": "Internal server error",
-        "server.not.reachable": "Server not reachable",
+        "server-not-reachable": "Server not reachable",
         "url.not.found": "Not found",
         "NotNull": "Field {{ fieldName }} cannot be empty!",
         "Size": "Field {{ fieldName }} does not meet min/max size requirements!",

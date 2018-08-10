@@ -37,15 +37,15 @@
         },
         "form": {
             "username": "Nom d'utilisateur",
-            "username.placeholder": "Votre nom d'utilisateur",
+            "username-placeholder": "Votre nom d'utilisateur",
             "currentpassword": "Current password",
-            "currentpassword.placeholder": "Current password",
+            "currentpassword-placeholder": "Current password",
             "newpassword": "Nouveau mot de passe",
-            "newpassword.placeholder": "Nouveau mot de passe",
+            "newpassword-placeholder": "Nouveau mot de passe",
             "confirmpassword": "Confirmation du nouveau mot de passe",
-            "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
+            "confirmpassword-placeholder": "Confirmation du nouveau mot de passe",
             "email": "Email",
-            "email.placeholder": "Votre email"
+            "email-placeholder": "Votre email"
         },
         "messages": {
             "info": {
@@ -124,7 +124,7 @@
     },
     "error": {
         "internalServerError": "Erreur interne du serveur",
-        "server.not.reachable": "Serveur inaccessible",
+        "server-not-reachable": "Serveur inaccessible",
         "url.not.found": "Non trouvé",
         "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
         "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",

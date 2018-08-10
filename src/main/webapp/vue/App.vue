@@ -12,6 +12,10 @@
                     <router-view></router-view>
                 </keep-alive>
             </div>
+            <b-modal id="loginModal" >
+                <span slot="modal-title" v-text="$t('login.title')"></span>
+                <login-form></login-form>
+            </b-modal>
             <jhi-footer></jhi-footer>
         </div>
     </div>
@@ -21,13 +25,15 @@
     import Ribbon from './components/Ribbon'
     import JhiFooter from './components/JhiFooter'
     import JhiNavBar from './components/JhipNavBar'
+    import LoginForm from './components/account/LoginForm'
 
     export default {
         name: 'App',
         components: {
             'ribbon': Ribbon,
             'jhi-nav-bar': JhiNavBar,
-            'jhi-footer': JhiFooter
+            'jhi-footer': JhiFooter,
+            'login-form': LoginForm
         }
     }
 </script>

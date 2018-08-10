@@ -22,32 +22,23 @@
                         </span>
                     </router-link>
                 </li>
-                <!--<li v-if="authenticated" ngbDropdown class="nav-item dropdown pointer" >
-                    <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
-                        <span>
+                <li v-if="authenticated" class="nav-item dropdown pointer" >
+                    <b-dropdown id="entity-menu" class="nav-link">
+                        <template slot="button-content">
                             <font-awesome-icon icon="th-list" />
-                            <span v-text="$t('global.menu.entities.main')">
-                                Entities
-                            </span>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu" ngbDropdownMenu>
-                        <li>
-                            <a class="dropdown-item" routerLink="sleeper"  v-on:click="collapseNavbar()">
-                                <font-awesome-icon icon="asterisk" />
-                                <span v-text="$t('global.menu.entities.sleeper')">Sleeper</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" routerLink="location"  v-on:click="collapseNavbar()">
-                                <font-awesome-icon icon="asterisk" />
-                                <span v-text="$t('global.menu.entities.location')">Location</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>-->
-                <!--<li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" >-->
-                <li class="nav-item dropdown pointer" >
+                            <span v-text="$t('global.menu.entities.main')">Entities</span>
+                        </template>
+                        <b-dropdown-item class="dropdown-item" routerLink="sleeper" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="asterisk" />
+                            <span v-text="$t('global.menu.entities.sleeper')">Sleeper</span>
+                        </b-dropdown-item>
+                        <b-dropdown-item class="dropdown-item" routerLink="location" v-on:click="collapseNavbar()">
+                            <font-awesome-icon icon="asterisk" />
+                            <span v-text="$t('global.menu.entities.location')">Location</span>
+                        </b-dropdown-item>
+                    </b-dropdown>
+                </li>
+                <li class="nav-item dropdown pointer" v-if="hasAnyAuthority('ROLE_ADMIN')">
                     <b-dropdown id="admin-menu" class="nav-link">
                         <template slot="button-content">
                             <font-awesome-icon icon="user-plus" />
@@ -88,14 +79,14 @@
                         </b-dropdown-item>
                     </b-dropdown>
                 </li>
-                <li class="nav-item dropdown pointer" v-if="languages && languages.length > 1">
+                <li class="nav-item dropdown pointer" v-if="languages && Object.keys(languages).length > 1">
                     <b-dropdown id="languagesnavBarDropdown" class="nav-link">
                         <template slot="button-content">
                             <font-awesome-icon icon="flag" />
                             <span v-text="$t('global.menu.language')">Language</span>
                         </template>
-                        <b-dropdown-item v-for="(language, key) in languages" :key="`lang-${key}`" v-on:click="changeLanguage(language);collapseNavbar();">
-                            {{language}}
+                        <b-dropdown-item v-for="(value, key) in languages" :key="`lang-${key}`" v-on:click="changeLanguage(key);collapseNavbar();">
+                            {{value.name}}
                         </b-dropdown-item>
                     </b-dropdown>
                 </li>
@@ -110,27 +101,33 @@
                         <template slot="button-content" v-if="getImageUrl()">
                             <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
                         </template>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" routerLink="settings" routerLinkActive="active" v-on:click="collapseNavbar()">
-                            <font-awesome-icon icon="wrench" />
-                            <span v-text="$t('global.menu.account.settings')">Settings</span>
+                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <router-link to="settings">
+                                <font-awesome-icon icon="wrench" />
+                                <span v-text="$t('global.menu.account.settings')">Settings</span>
+                            </router-link>
                         </b-dropdown-item>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" routerLink="password" routerLinkActive="active" v-on:click="collapseNavbar()">
-                            <font-awesome-icon icon="clock" />
-                            <span v-text="$t('global.menu.account.password')">Password</span>
+                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <router-link to="changePassword">
+                                <font-awesome-icon icon="clock" />
+                                <span v-text="$t('global.menu.account.password')">Password</span>
+                            </router-link>
                         </b-dropdown-item>
-                        <b-dropdown-item v-if="authenticated" class="dropdown-item" routerLink="sessions" routerLinkActive="active" v-on:click="collapseNavbar()">
-                            <font-awesome-icon icon="cloud" />
-                            <span v-text="$t('global.menu.account.sessions')">Sessions</span>
+                        <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
+                            <router-link to="sessions">
+                                <font-awesome-icon icon="cloud" />
+                                <span v-text="$t('global.menu.account.sessions')">Sessions</span>
+                            </router-link>
                         </b-dropdown-item>
                         <b-dropdown-item v-if="authenticated" class="dropdown-item" v-on:click="logout()" id="logout">
                             <font-awesome-icon icon="sign-out-alt" />
                             <span v-text="$t('global.menu.account.logout')">Sign out</span>
                         </b-dropdown-item>
-                        <b-dropdown-item v-if="!authenticated" class="dropdown-item" v-on:click="login()" id="login">
+                        <b-dropdown-item v-if="!authenticated" class="dropdown-item" v-on:click="openLogin()" id="login">
                             <font-awesome-icon icon="sign-in-alt" />
                             <span v-text="$t('global.menu.account.login')">Sign in</span>
                         </b-dropdown-item>
-                        <b-dropdown-item v-if="!authenticated" class="dropdown-item" routerLink="register" routerLinkActive="active" v-on:click="collapseNavbar()">
+                        <b-dropdown-item v-if="!authenticated" class="dropdown-item" v-on:click="collapseNavbar()">
                             <router-link to="register">
                                 <font-awesome-icon icon="user-plus" />
                                 <span v-text="$t('global.menu.account.register')">Register</span>
@@ -145,16 +142,18 @@
 <script>
     import {VERSION} from "../constants";
     import TranslationService from '../locale/TranslationService';
+    import LoginModalService from '../components/account/LoginModalService';
+    import Principal from './account/Principal';
+    import LanguageService from '../locale/LanguageService';
 
     export default {
         name: 'JhiNavBar',
-        mixins: [TranslationService],
+        mixins: [TranslationService, LoginModalService, Principal, LanguageService],
         data : function() {
             return {
                 version : VERSION ? 'v' + VERSION : '',
                 swaggerEnabled: false,
                 inProduction: false,
-                languages: ['en', 'fr'],
                 isNavbarCollapsed: true
             }
         },
@@ -167,11 +166,15 @@
             },
             changeLanguage: function (language) {
                 this.currentLanguage = language;
+            },
+            logout: function () {
+                this.$store.commit('logout');
+                this.$router.push('/');
             }
         },
         computed:{
             authenticated(){
-                return false;
+                return this.$store.getters.authenticated;
             }
         }
     }

@@ -1,11 +1,11 @@
 {
     "settings": {
-        "title": "Profil de l'utilisateur [<b>{{username}}</b>]",
+        "title": "Profil de l'utilisateur ",
         "form": {
             "firstname": "Prénom",
-            "firstname.placeholder": "Votre prénom",
+            "firstname-placeholder": "Votre prénom",
             "lastname": "Nom",
-            "lastname.placeholder": "Votre nom",
+            "lastname-placeholder": "Votre nom",
             "language": "Langue",
             "button": "Sauvegarder"
         },

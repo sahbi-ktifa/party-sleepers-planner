@@ -11,7 +11,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import Vuex from 'vuex'
 
+Vue.use(Vuex)
 Vue.use(Vuelidate);
 Vue.use(BootstrapVue);
 Vue.use(VueI18n);
@@ -24,12 +26,33 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 const i18n = new VueI18n({
     silentTranslationWarn: true
 });
+const store = new Vuex.Store({
+    state: {
+        userIdentity: null,
+        authenticated: false
+    },
+    mutations: {
+        authenticate(state, identity) {
+            state.userIdentity = identity;
+            state.authenticated = true;
+        },
+        logout(state) {
+            state.userIdentity = null;
+            state.authenticated = false;
+        }
+    },
+    getters: {
+        account: state => state.userIdentity,
+        authenticated: state => state.authenticated
+    }
+});
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
     components: { App },
     template: '<App/>',
-    i18n
+    i18n,
+    store
 });
 

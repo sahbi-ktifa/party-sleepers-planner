@@ -9,13 +9,12 @@
 
             <div>
                 <div class="alert alert-success" v-if="authenticated">
-                <span v-if="account" v-text="$t('home.logged.message')"
-                      v-bind:translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
+                    <span v-if="account" v-text="$t('home.logged.message')"> You are logged in as user </span>"{{account.login}}".
                 </div>
 
                 <div class="alert alert-warning" v-if="!authenticated">
                     <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
-                    <a class="alert-link" v-on:click="login()" v-text="$t('global.messages.info.authenticated.link')">sign in</a><span v-html="$t('global.messages.info.authenticated.suffix')">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+                    <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a><span v-html="$t('global.messages.info.authenticated.suffix')">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
                 </div>
                 <div class="alert alert-warning" v-if="!authenticated">
                     <span v-text="$t('global.messages.info.register.noaccount')">You don't have an account yet?</span>&nbsp;
@@ -43,17 +42,18 @@
 </template>
 
 <script>
+    import LoginModalService from './account/LoginModalService';
+    import Principal from './account/Principal';
+    import { mapGetters } from 'vuex'
+
     export default {
         name: 'Home',
-        data () {
-            return {
-                account: null
-            }
-        },
-        computed:{
-            authenticated(){
-                return false;
-            }
+        mixins: [LoginModalService, Principal],
+        computed: {
+            ...mapGetters([
+                'authenticated',
+                'account'
+            ])
         }
     }
 </script>
