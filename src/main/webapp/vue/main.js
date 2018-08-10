@@ -12,8 +12,10 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import Vuex from 'vuex'
+import VueCookie from 'vue-cookie'
 
-Vue.use(Vuex)
+Vue.use(VueCookie);
+Vue.use(Vuex);
 Vue.use(Vuelidate);
 Vue.use(BootstrapVue);
 Vue.use(VueI18n);
@@ -28,20 +30,27 @@ const i18n = new VueI18n({
 });
 const store = new Vuex.Store({
     state: {
+        logon: false,
         userIdentity: null,
         authenticated: false
     },
     mutations: {
-        authenticate(state, identity) {
+        authenticate(state) {
+            state.logon = true;
+        },
+        authenticated(state, identity) {
             state.userIdentity = identity;
             state.authenticated = true;
+            state.logon = false;
         },
         logout(state) {
             state.userIdentity = null;
             state.authenticated = false;
+            state.logon = false;
         }
     },
     getters: {
+        logon: state => state.logon,
         account: state => state.userIdentity,
         authenticated: state => state.authenticated
     }
